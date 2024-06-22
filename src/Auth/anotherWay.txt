@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+//! another way to create protected route
 
-const Protected = () => {
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const Protected = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Protected = () => {
   }, [navigate]);
 
   // Render children only if authenticated
-  return <>{authenticated ? <Outlet /> : null}</>;
+  return <>{authenticated ? children : null}</>;
 };
 
 export default Protected;

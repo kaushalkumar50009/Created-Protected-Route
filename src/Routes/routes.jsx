@@ -11,22 +11,10 @@ export const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
 
       {/* Wrapped in <Protected> component to check authentication before rendering Dashboard and Setting components. */}
-      <Route
-        path="dashboard"
-        element={
-          <Protected>
-            <Dashboard />
-          </Protected>
-        }
-      />
-      <Route
-        path="setting"
-        element={
-          <Protected>
-            <Setting />
-          </Protected>
-        }
-      />
+      <Route element={<Protected />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="setting" element={<Setting />} />
+      </Route>
     </Route>
   )
 );
